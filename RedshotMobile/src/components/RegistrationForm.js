@@ -26,7 +26,31 @@ class RegistrationForm extends Component {
 
   handleSubmit = () => {
     const { username, email, password } = this.state;
-    // TODO: Call the registration API endpoint with the user data
+
+    fetch('http://localhost:3000/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 200 || data.status === 201) {
+        // Display a success message to the user
+        Alert.alert('Registration successful');
+      } else {
+        // Display an error message to the user
+        Alert.alert('Registration failed');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   }
 
   render() {
