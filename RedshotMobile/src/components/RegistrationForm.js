@@ -27,7 +27,7 @@ class RegistrationForm extends Component {
   handleSubmit = () => {
     const { username, email, password } = this.state;
 
-    fetch('http://localhost:3000/api/register', {
+    fetch('https://e42a-2607-fea8-8760-3f00-e359-1717-f34d-2565.ngrok.io:3000/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
